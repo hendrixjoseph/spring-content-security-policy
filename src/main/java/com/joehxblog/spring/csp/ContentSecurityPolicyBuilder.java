@@ -25,7 +25,7 @@ public class ContentSecurityPolicyBuilder {
     }
     
     public ContentSecurityPolicy build() {
-        var csp = this.cspMap.entrySet().stream()
+        String csp = this.cspMap.entrySet().stream()
             .map(e -> e.getKey() 
                     + " " 
                     + e.getValue().stream()

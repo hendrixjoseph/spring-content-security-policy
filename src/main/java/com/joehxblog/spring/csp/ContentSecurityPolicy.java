@@ -5,6 +5,10 @@ import org.springframework.security.web.SecurityFilterChain;
 
 public class ContentSecurityPolicy {
     
+    public static ContentSecurityPolicyBuilder build() {
+        return new ContentSecurityPolicyBuilder();
+    }
+    
     private final String contentSecurityPolicy;
     
     public ContentSecurityPolicy() {
