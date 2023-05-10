@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 
 import com.joehxblog.spring.csp.directive.Directive;
 import com.joehxblog.spring.csp.value.Value;
+import com.joehxblog.spring.csp.directive.CustomDirective;
+import com.joehxblog.spring.csp.value.CustomValue;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +23,14 @@ public class ContentSecurityPolicyBuilder {
     
     public ContentSecurityPolicyBuilder add(Directive directive, Value value) {
         this.cspMap.computeIfAbsent(directive, d -> new ArrayList<>()).add(value);
+        return this;
+    }
+    
+    public ContentSecurityPolicyBuilder add(String directive, String value) {
+        Directive customDirective = new CustomDirective(directive);
+        Value customValue = new CustomValue(value);
+
+        this.cspMap.computeIfAbsent(customDirective, d -> new ArrayList<>()).add(customValue);
         return this;
     }
     
