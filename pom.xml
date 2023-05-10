@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.joehxblog</groupId>
   <artifactId>spring-content-security-policy</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.6.0.3-SNAPSHOT</version>
   <packaging>jar</packaging>
   
   <name>${project.groupId}:${project.artifactId}</name>
@@ -16,7 +16,7 @@
   <licenses>
     <license>
       <name>The Apache License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <url></url>
     </license>
   </licenses>
   
@@ -42,9 +42,14 @@
   
   <dependencies>
     <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-security</artifactId>
-        <version>3.0.6</version>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-config</artifactId>
+        <version>6.0.3</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-web</artifactId>
+        <version>6.0.3</version>
     </dependency>
     <dependency>
         <groupId>org.junit.jupiter</groupId>
