@@ -1,12 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.joehxblog</groupId>
-  <artifactId>spring.content-security-policy</artifactId>
+  <artifactId>spring-content-security-policy</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  
+  <name>${project.groupId}:${project.artifactId}</name>
+  <description>
+      A Content Security Policy builder and bean
+      to help secure Spring applications.
+  </description>
+  <url>https://github.com/hendrixjoseph/spring-content-security-policy</url>
+  
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+  
+  <developers>
+    <developer>
+      <name>Joseph Hendrix</name>
+      <email></email>
+      <organization></organization>
+      <organizationUrl>https://www.joehxblog.com/</organizationUrl>
+    </developer>
+  </developers>
+  
+  <scm>
+    <connection>scm:git:git://github.com/hendrixjoseph/spring-content-security-policy.git</connection>
+    <developerConnection>scm:git:ssh://github.com:hendrixjoseph/spring-content-security-policy.git</developerConnection>
+    <url>http://github.com/hendrixjoseph/spring-content-security-policy/tree/master</url>
+  </scm>
+
   <properties>
-     <maven.compiler.source>8</maven.compiler.source>
-     <maven.compiler.target>8</maven.compiler.target>
+     <maven.compiler.source>19</maven.compiler.source>
+     <maven.compiler.target>19</maven.compiler.target>
   </properties>
+  
   <dependencies>
     <dependency>
         <groupId>org.springframework.boot</groupId>
