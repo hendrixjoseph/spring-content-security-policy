@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import com.joehxblog.spring.csp.ContentSecurityPolicy;
 import com.joehxblog.spring.csp.ContentSecurityPolicyBuilder;
 import com.joehxblog.spring.csp.directive.FetchDirective;
 import com.joehxblog.spring.csp.directive.Directive;
@@ -14,7 +15,7 @@ class ContentSecurityPolicyBuilderTest {
 
     @Test
     void testSimpleCsp() {
-        var csp = new ContentSecurityPolicyBuilder()
+        var csp = ContentSecurityPolicy.build()
             .add(FetchDirective.DEFAULT_SRC, KeywordValue.SELF)
             .build();
         
@@ -28,7 +29,7 @@ class ContentSecurityPolicyBuilderTest {
         
         var count = allValues.length * allDirectives.length  + allDirectives.length;
         
-        var builder = new ContentSecurityPolicyBuilder();
+        var builder = ContentSecurityPolicy.build();
         
         for (Directive d : allDirectives) {
             for (Value v : allValues) {
@@ -39,5 +40,43 @@ class ContentSecurityPolicyBuilderTest {
         var csp = builder.build();
         
         assertEquals(count, csp.toString().split(" ").length);
+    }
+    
+    @Test
+    void testAddingTheSameValueTwiceInOneAdd() {
+        var csp = ContentSecurityPolicy.build()
+            .add(FetchDirective.DEFAULT_SRC, KeywordValue.SELF, KeywordValue.SELF)
+            .build();
+        
+        assertEquals("default-src 'self'", csp.toString());
+    }
+    
+    @Test
+    void testAddingTheSameValueTwiceInTwoAdds() {
+        var csp = ContentSecurityPolicy.build()
+            .add(FetchDirective.DEFAULT_SRC, KeywordValue.SELF)
+            .add(FetchDirective.DEFAULT_SRC, KeywordValue.SELF)
+            .build();
+        
+        assertEquals("default-src 'self'", csp.toString());
+    }
+    
+    @Test
+    void testAddingTheSameCustomValueTwiceInOneAdd() {
+        var csp = ContentSecurityPolicy.build()
+            .add("directive", "custom", "custom")
+            .build();
+        
+        assertEquals("directive custom", csp.toString());
+    }
+    
+    @Test
+    void testAddingTheSameCustomValueTwiceInTwoAdds() {
+        var csp = ContentSecurityPolicy.build()
+            .add("directive", "custom")
+            .add("directive", "custom")
+            .build();
+        
+        assertEquals("directive custom", csp.toString());
     }
 }

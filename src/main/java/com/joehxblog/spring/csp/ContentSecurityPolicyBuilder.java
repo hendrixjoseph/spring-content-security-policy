@@ -8,30 +8,34 @@ import com.joehxblog.spring.csp.value.Value;
 import com.joehxblog.spring.csp.directive.CustomDirective;
 import com.joehxblog.spring.csp.value.CustomValue;
 
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.stream.Collector;
 
 public class ContentSecurityPolicyBuilder {
     
     private static Collector<CharSequence, ?, String> SPACE_COLLECTOR = Collectors.joining(" ");
 
-    private Map<Directive, List<Value>> cspMap = new HashMap<>();
+    private Map<Directive, Set<Value>> cspMap = new HashMap<>();
     
-    public ContentSecurityPolicyBuilder() {}
+    ContentSecurityPolicyBuilder() {}
     
-    public ContentSecurityPolicyBuilder add(Directive directive, Value value) {
-        this.cspMap.computeIfAbsent(directive, d -> new ArrayList<>()).add(value);
+    public ContentSecurityPolicyBuilder add(Directive directive, Value... values) {
+        Set<Value> valueSet = Arrays.stream(values).collect(Collectors.toSet());
+        
+        this.cspMap.computeIfAbsent(directive, d -> new HashSet<>()).addAll(valueSet);
         return this;
     }
     
-    public ContentSecurityPolicyBuilder add(String directive, String value) {
+    public ContentSecurityPolicyBuilder add(String directive, String... values) {
         Directive customDirective = new CustomDirective(directive);
-        Value customValue = new CustomValue(value);
-
-        this.cspMap.computeIfAbsent(customDirective, d -> new ArrayList<>()).add(customValue);
-        return this;
+        Value[] valueArray = Arrays.stream(values)
+                .map(v -> new CustomValue(v))
+                .toArray(s -> new Value[s]);
+        
+        return this.add(customDirective, valueArray);
     }
     
     public ContentSecurityPolicy build() {
