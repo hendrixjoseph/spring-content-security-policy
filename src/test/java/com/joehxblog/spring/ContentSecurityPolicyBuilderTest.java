@@ -79,4 +79,14 @@ class ContentSecurityPolicyBuilderTest {
         
         assertEquals("directive custom", csp.toString());
     }
+    
+    @Test
+    void testAddingTheSameCustomValueAndEnumValue() {
+        var csp = ContentSecurityPolicy.build()
+            .add(FetchDirective.DEFAULT_SRC, KeywordValue.SELF)
+            .add(FetchDirective.DEFAULT_SRC, KeywordValue.SELF.toString())
+            .build();
+        
+        assertEquals("default-src 'self'", csp.toString());
+    }
 }

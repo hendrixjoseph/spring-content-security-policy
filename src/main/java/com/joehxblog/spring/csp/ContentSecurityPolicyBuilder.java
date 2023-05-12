@@ -18,24 +18,27 @@ public class ContentSecurityPolicyBuilder {
     
     private static Collector<CharSequence, ?, String> SPACE_COLLECTOR = Collectors.joining(" ");
 
-    private Map<Directive, Set<Value>> cspMap = new HashMap<>();
+    private Map<String, Set<String>> cspMap = new HashMap<>();
     
     ContentSecurityPolicyBuilder() {}
     
     public ContentSecurityPolicyBuilder add(Directive directive, Value... values) {
-        Set<Value> valueSet = Arrays.stream(values).collect(Collectors.toSet());
+        String[] valueArray = Arrays.stream(values)
+                .map(v -> v.toString())
+                .toArray(s -> new String[s]);
+        
+        return this.add(directive.toString(), valueArray);
+    }
+    
+    public ContentSecurityPolicyBuilder add(Directive directive, String... values) {
+        return this.add(directive.toString(), values);
+    }
+    
+    public ContentSecurityPolicyBuilder add(String directive, String... values) {       
+        Set<String> valueSet = Arrays.stream(values).collect(Collectors.toSet());
         
         this.cspMap.computeIfAbsent(directive, d -> new HashSet<>()).addAll(valueSet);
         return this;
-    }
-    
-    public ContentSecurityPolicyBuilder add(String directive, String... values) {
-        Directive customDirective = new CustomDirective(directive);
-        Value[] valueArray = Arrays.stream(values)
-                .map(v -> new CustomValue(v))
-                .toArray(s -> new Value[s]);
-        
-        return this.add(customDirective, valueArray);
     }
     
     public ContentSecurityPolicy build() {
