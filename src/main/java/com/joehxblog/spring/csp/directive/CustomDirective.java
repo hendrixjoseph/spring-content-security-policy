@@ -4,7 +4,12 @@ import java.util.Objects;
 
 public class CustomDirective implements Directive {
     private final String directive;
-    
+
+    /**
+     * Creates a custom directive.
+     *
+     * @param directive the custom directive string
+     */
     public CustomDirective(final String directive) {
         this.directive = directive;
     }
