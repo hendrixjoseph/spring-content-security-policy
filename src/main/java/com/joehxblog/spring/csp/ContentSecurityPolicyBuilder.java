@@ -1,31 +1,24 @@
 package com.joehxblog.spring.csp;
 
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import com.joehxblog.spring.csp.directive.Directive;
 import com.joehxblog.spring.csp.value.Value;
-import com.joehxblog.spring.csp.directive.CustomDirective;
-import com.joehxblog.spring.csp.value.CustomValue;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.*;
 import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class ContentSecurityPolicyBuilder {
     
-    private static Collector<CharSequence, ?, String> SPACE_COLLECTOR = Collectors.joining(" ");
+    private static final Collector<CharSequence, ?, String> SPACE_COLLECTOR = Collectors.joining(" ");
 
-    private Map<String, Set<String>> cspMap = new HashMap<>();
+    private final Map<String, Set<String>> cspMap = new HashMap<>();
     
     ContentSecurityPolicyBuilder() {}
     
     public ContentSecurityPolicyBuilder add(Directive directive, Value... values) {
         String[] valueArray = Arrays.stream(values)
-                .map(v -> v.toString())
-                .toArray(s -> new String[s]);
+                .map(Object::toString)
+                .toArray(String[]::new);
         
         return this.add(directive.toString(), valueArray);
     }
@@ -46,7 +39,6 @@ public class ContentSecurityPolicyBuilder {
             .map(e -> e.getKey() 
                     + " " 
                     + e.getValue().stream()
-                        .map(v -> v.toString())
                         .collect(SPACE_COLLECTOR))
             .collect(SPACE_COLLECTOR);
         

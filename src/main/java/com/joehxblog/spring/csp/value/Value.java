@@ -10,8 +10,8 @@ public interface Value {
         };
 
         return Arrays.stream(values)
-            .flatMap(e -> Arrays.stream(e))
-            .toArray(s -> new Value[s]);
+            .flatMap(Arrays::stream)
+            .toArray(Value[]::new);
     }
     
     static String stringify(String string) {

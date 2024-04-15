@@ -11,8 +11,8 @@ public interface Directive {
         };
 
         return Arrays.stream(values)
-            .flatMap(e -> Arrays.stream(e))
-            .toArray(s -> new Directive[s]);
+            .flatMap(Arrays::stream)
+            .toArray(Directive[]::new);
     }
     
     static String stringify(String string) {
