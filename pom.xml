@@ -5,21 +5,21 @@
   <artifactId>spring-content-security-policy</artifactId>
   <version>0.6.0.3-SNAPSHOT</version>
   <packaging>jar</packaging>
-  
+
   <name>${project.groupId}:${project.artifactId}</name>
   <description>
       A Content Security Policy builder and bean
       to help secure Spring applications.
   </description>
   <url>https://github.com/hendrixjoseph/spring-content-security-policy</url>
-  
+
   <licenses>
     <license>
       <name>The Apache License, Version 2.0</name>
       <url></url>
     </license>
   </licenses>
-  
+
   <developers>
     <developer>
       <name>Joseph Hendrix</name>
@@ -28,7 +28,7 @@
       <organizationUrl>https://www.joehxblog.com/</organizationUrl>
     </developer>
   </developers>
-  
+
   <scm>
     <connection>scm:git:git://github.com/hendrixjoseph/spring-content-security-policy.git</connection>
     <developerConnection>scm:git:ssh://github.com:hendrixjoseph/spring-content-security-policy.git</developerConnection>
@@ -39,26 +39,26 @@
      <maven.compiler.source>19</maven.compiler.source>
      <maven.compiler.target>19</maven.compiler.target>
   </properties>
-  
+
   <dependencies>
     <dependency>
         <groupId>org.springframework.security</groupId>
         <artifactId>spring-security-config</artifactId>
-        <version>6.0.3</version>
+        <version>6.2.3</version>
     </dependency>
     <dependency>
         <groupId>org.springframework.security</groupId>
         <artifactId>spring-security-web</artifactId>
-        <version>6.0.3</version>
+        <version>6.2.3</version>
     </dependency>
     <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-api</artifactId>
-        <version>5.9.3</version>
+        <version>5.10.2</version>
         <scope>test</scope>
     </dependency>
   </dependencies>
-  
+
   <distributionManagement>
     <snapshotRepository>
       <id>ossrh</id>
@@ -71,7 +71,7 @@
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.7</version>
+        <version>1.6.13</version>
         <extensions>true</extensions>
         <configuration>
           <serverId>ossrh</serverId>
@@ -82,7 +82,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>2.2.1</version>
+        <version>3.3.1</version>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -95,7 +95,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.9.1</version>
+        <version>3.6.3</version>
         <executions>
           <execution>
             <id>attach-javadocs</id>
@@ -106,10 +106,10 @@
         </executions>
       </plugin>
        <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-        <version>1.5</version>
-        <executions>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-gpg-plugin</artifactId>
+         <version>3.2.3</version>
+         <executions>
           <execution>
             <id>sign-artifacts</id>
             <phase>verify</phase>

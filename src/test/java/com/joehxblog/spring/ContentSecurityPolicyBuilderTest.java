@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import com.joehxblog.spring.csp.ContentSecurityPolicy;
-import com.joehxblog.spring.csp.ContentSecurityPolicyBuilder;
 import com.joehxblog.spring.csp.directive.FetchDirective;
 import com.joehxblog.spring.csp.directive.Directive;
 import com.joehxblog.spring.csp.value.KeywordValue;
