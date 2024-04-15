@@ -71,3 +71,13 @@ public class Config {
     }
 }
 ```
+
+### Maven Dependency Tag
+
+```xml
+<dependency>
+    <groupId>com.joehxblog</groupId>
+    <artifactId>spring-content-security-policy</artifactId>
+    <version>6.2.3</version>
+</dependency>
+```
