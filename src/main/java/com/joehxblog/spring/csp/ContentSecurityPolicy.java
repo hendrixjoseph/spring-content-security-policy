@@ -1,5 +1,6 @@
 package com.joehxblog.spring.csp;
 
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -20,10 +21,11 @@ public class ContentSecurityPolicy {
     }
 
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.headers()
-            .xssProtection()
-            .and()
-            .contentSecurityPolicy(contentSecurityPolicy);
+        http.headers(header -> header.xssProtection(Customizer.withDefaults()))
+            .headers(header -> header.contentSecurityPolicy(policy ->
+                    policy.policyDirectives(contentSecurityPolicy)
+            ));
+
         return http.build();
     }
     
