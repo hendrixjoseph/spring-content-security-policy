@@ -2,7 +2,7 @@ package com.joehxblog.spring.csp.value;
 
 public class ShaValue {
     public enum ShaType {
-        SHA256, SHA384, SHA512;
+        SHA256, SHA384, SHA512
     }
 
     private final ShaType shaType;

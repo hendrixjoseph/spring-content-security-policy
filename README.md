@@ -16,7 +16,7 @@ import com.joehxblog.spring.csp.ContentSecurityPolicy;
 
 @Configuration
 public class Config {
-    private ContentSecurityPolicy csp = new ContentSecurityPolicy();
+    private final ContentSecurityPolicy csp = new ContentSecurityPolicy();
     
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -38,7 +38,7 @@ import com.joehxblog.spring.csp.ContentSecurityPolicy;
 
 @Configuration
 public class Config {
-    private ContentSecurityPolicy csp = new ContentSecurityPolicy("default-src 'self'");
+    private final ContentSecurityPolicy csp = new ContentSecurityPolicy("default-src 'self'");
     
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -61,7 +61,7 @@ import com.joehxblog.spring.csp.value.KeywordValue;
 
 @Configuration
 public class Config {
-    private ContentSecurityPolicy csp = ContentSecurityPolicy.build()
+    private final ContentSecurityPolicy csp = ContentSecurityPolicy.build()
             .add(FetchDirective.DEFAULT_SRC, KeywordValue.SELF)
             .build();
     

@@ -1,8 +1,5 @@
 package com.joehxblog.spring.csp.directive;
 
-import com.joehxblog.spring.csp.value.KeywordValue;
-import com.joehxblog.spring.csp.value.UnsafeKeywordValue;
-
 import java.util.Arrays;
 
 /**
