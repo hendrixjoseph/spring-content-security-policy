@@ -78,6 +78,6 @@ public class Config {
 <dependency>
     <groupId>com.joehxblog</groupId>
     <artifactId>spring-content-security-policy</artifactId>
-    <version>6.2.3</version>
+    <version>6.4.1</version>
 </dependency>
 ```
