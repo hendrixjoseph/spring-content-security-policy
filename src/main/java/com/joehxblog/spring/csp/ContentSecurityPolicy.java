@@ -20,7 +20,7 @@ public class ContentSecurityPolicy {
         this.contentSecurityPolicy = contentSecurityPolicy;
     }
 
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) {
         http.headers(header -> header.xssProtection(Customizer.withDefaults()))
             .headers(header -> header.contentSecurityPolicy(policy ->
                     policy.policyDirectives(contentSecurityPolicy)
