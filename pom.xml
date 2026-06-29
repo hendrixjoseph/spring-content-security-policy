@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.joehxblog</groupId>
   <artifactId>spring-content-security-policy</artifactId>
-  <version>7.0.0</version>
+  <version>7.1.0</version>
   <packaging>jar</packaging>
 
   <name>${project.groupId}:${project.artifactId}</name>
@@ -32,29 +32,29 @@
   <scm>
     <connection>scm:git:git://github.com/hendrixjoseph/spring-content-security-policy.git</connection>
     <developerConnection>scm:git:ssh://github.com:hendrixjoseph/spring-content-security-policy.git</developerConnection>
-    <url>http://github.com/hendrixjoseph/spring-content-security-policy/tree/master</url>
+    <url>https://github.com/hendrixjoseph/spring-content-security-policy/tree/master</url>
   </scm>
 
   <properties>
-     <maven.compiler.source>19</maven.compiler.source>
-     <maven.compiler.target>19</maven.compiler.target>
+     <maven.compiler.source>21</maven.compiler.source>
+     <maven.compiler.target>21</maven.compiler.target>
   </properties>
 
   <dependencies>
     <dependency>
         <groupId>org.springframework.security</groupId>
         <artifactId>spring-security-config</artifactId>
-        <version>7.0.0</version>
+        <version>${project.version}</version>
     </dependency>
     <dependency>
         <groupId>org.springframework.security</groupId>
         <artifactId>spring-security-web</artifactId>
-        <version>7.0.0</version>
+        <version>${project.version}</version>
     </dependency>
     <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-api</artifactId>
-        <version>6.0.1</version>
+        <version>6.1.0</version>
         <scope>test</scope>
     </dependency>
   </dependencies>
@@ -64,7 +64,7 @@
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
-        <version>6.0.1</version>
+        <version>6.1.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -83,7 +83,7 @@
       <plugin>
         <groupId>org.sonatype.central</groupId>
         <artifactId>central-publishing-maven-plugin</artifactId>
-        <version>0.8.0</version>
+        <version>0.11.0</version>
         <extensions>true</extensions>
         <configuration>
           <publishingServerId>central</publishingServerId>
@@ -92,7 +92,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>3.3.1</version>
+        <version>3.4.0</version>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -105,7 +105,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.11.2</version>
+        <version>3.12.0</version>
         <executions>
           <execution>
             <id>attach-javadocs</id>
@@ -118,7 +118,7 @@
        <plugin>
          <groupId>org.apache.maven.plugins</groupId>
          <artifactId>maven-gpg-plugin</artifactId>
-         <version>3.2.7</version>
+         <version>3.2.8</version>
          <executions>
           <execution>
             <id>sign-artifacts</id>
